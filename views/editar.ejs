@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> edit</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+    <% if(user) { %>
+    <div class="container col-lg-6 mt-3">
+        <div class="card border-secondary">
+            <div class="card-header">Nuevo Editar</div>
+            <div class="card-body">
+                <form action="/update" method="post">
+                    <input type="hidden" name="id" value="<%= user.id %>">
+                    <div class="group-form mb-2">
+                        <label for="" class="form-label">Nombre</label>
+                        <input type="text" name="user" id="" class="form-control" value="<%= user.user %>">
+                    </div>
+                    <div class="group-form mb-2">
+                        <label for="" class="form-label">Rol</label>
+                        <select class="form-select" aria-label="Default select example" name="rol" value="<%= user.rol %>">
+                            <option <%= user.rol=='admin' ? "selected":'' %> value="admin" >admin</option>
+                            <option <%= user.rol=='data' ? "selected":''%> value="data">data</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success" tabindex="5">Guardar</button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+                        <button type="reset" class="btn btn-warning">Limpiar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% } %>
+
+    <script src="./js/bootstrap.js"></script>
+</body>
+</html>
